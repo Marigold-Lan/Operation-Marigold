@@ -1,0 +1,22 @@
+{
+  "files.exclude": {
+    "**/*.meta": true,
+    "**/*.cs.meta": true,
+
+    "Library": true,
+    "Logs": true,
+    "Obj": true,
+    "Temp": true,
+    "Build": true,
+    ".git": true
+  },
+  "search.exclude": {
+    "**/*.meta": true,
+    "**/*.cs.meta": true,
+    "Library": true,
+    "Logs": true,
+    "Obj": true,
+    "Temp": true,
+    "Build": true
+  }
+}

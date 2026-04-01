@@ -1,0 +1,10 @@
+{
+  "files.exclude": {
+    "**/*.meta": true,
+    "**/OperationMarigold.Game.asmdef": true
+  },
+  "search.exclude": {
+    "**/*.meta": true,
+    "**/OperationMarigold.Game.asmdef": true
+  }
+}

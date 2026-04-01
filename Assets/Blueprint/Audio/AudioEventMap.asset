@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795ee2928bc0a9542844cd6b496a14a0, type: 3}
+  m_Name: AudioEventMap
+  m_EditorClassIdentifier: 
+  _entries:
+  - gameEvent: 10
+    cueId: 10
+  - gameEvent: 11
+    cueId: 11
+  - gameEvent: 12
+    cueId: 12
+  - gameEvent: 13
+    cueId: 13
+  - gameEvent: 14
+    cueId: 107
+  - gameEvent: 15
+    cueId: 108
+  - gameEvent: 16
+    cueId: 14
+  - gameEvent: 17
+    cueId: 15
+  - gameEvent: 18
+    cueId: 16
+  - gameEvent: 100
+    cueId: 100
+  - gameEvent: 101
+    cueId: 101
+  - gameEvent: 102
+    cueId: 102
+  - gameEvent: 103
+    cueId: 103
+  - gameEvent: 104
+    cueId: 104
+  - gameEvent: 105
+    cueId: 105
+  - gameEvent: 106
+    cueId: 106
+  - gameEvent: 107
+    cueId: 109
+  - gameEvent: 108
+    cueId: 110
+  - gameEvent: 109
+    cueId: 1002
+  - gameEvent: 110
+    cueId: 1003
+  - gameEvent: 111
+    cueId: 111
+  - gameEvent: 112
+    cueId: 112
+  - gameEvent: 113
+    cueId: 113
+  - gameEvent: 114
+    cueId: 114
+  - gameEvent: 115
+    cueId: 115
+  - gameEvent: 116
+    cueId: 116
+  - gameEvent: 117
+    cueId: 117
+  - gameEvent: 118
+    cueId: 118

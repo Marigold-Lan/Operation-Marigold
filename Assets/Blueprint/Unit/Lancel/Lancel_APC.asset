@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1aa31607052a0340a3c712bb23104d9, type: 3}
+  m_Name: Lancel_APC
+  m_EditorClassIdentifier: 
+  _legacyMigrated: 1
+  canAttack: 0
+  attackRangeMin: 1
+  attackRangeMax: 1
+  primaryWeaponDamage: 10
+  secondaryWeaponDamage: 5
+  primaryDamageMatrix: []
+  secondaryDamageMatrix: []
+  id: Lancel_APC
+  displayName: APC
+  Description: 
+  cost: 5000
+  prefab: {fileID: 3835465892741974597, guid: 42293581fc575c94eac5b5f0c45c2488, type: 3}
+  maxHp: 10
+  maxFuel: 70
+  maxAmmo: 9
+  movementRange: 6
+  movementType: 2
+  visionRange: 1
+  category: 0
+  aiRoleOverride: 0
+  hasPrimaryWeapon: 0
+  primaryWeapon:
+    weaponName: Primary Weapon
+    baseDamage: 10
+    attackRangeMin: 1
+    attackRangeMax: 1
+    canAttackVehicle: 1
+    canAttackSoldier: 1
+    requiresStationaryToAttack: 0
+    damageMatrix:
+    - targetUnitId: 
+      damagePercent: 0
+    - targetUnitId: 
+      damagePercent: 0
+  hasSecondaryWeapon: 0
+  secondaryWeapon:
+    weaponName: Secondary Weapon
+    baseDamage: 5
+    attackRangeMin: 1
+    attackRangeMax: 1
+    canAttackVehicle: 1
+    canAttackSoldier: 1
+    requiresStationaryToAttack: 0
+    damageMatrix: []
+  primaryAmmoCapacity: 0

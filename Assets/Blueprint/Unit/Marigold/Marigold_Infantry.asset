@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1aa31607052a0340a3c712bb23104d9, type: 3}
+  m_Name: Marigold_Infantry
+  m_EditorClassIdentifier: 
+  _legacyMigrated: 1
+  canAttack: 1
+  attackRangeMin: 1
+  attackRangeMax: 1
+  primaryWeaponDamage: 10
+  secondaryWeaponDamage: 5
+  primaryDamageMatrix: []
+  secondaryDamageMatrix: []
+  id: Marigold_Infantry
+  displayName: Infantry
+  Description: 
+  cost: 1000
+  prefab: {fileID: 1597176109643777695, guid: a4094d834f1976948915e3f5c3995bc7, type: 3}
+  maxHp: 10
+  maxFuel: 99
+  maxAmmo: 9
+  movementRange: 3
+  movementType: 0
+  visionRange: 2
+  category: 1
+  hasPrimaryWeapon: 0
+  primaryWeapon:
+    weaponName: Primary Weapon
+    baseDamage: 10
+    attackRangeMin: 1
+    attackRangeMax: 1
+    canAttackVehicle: 1
+    canAttackSoldier: 1
+    requiresStationaryToAttack: 0
+    damageMatrix: []
+  hasSecondaryWeapon: 1
+  secondaryWeapon:
+    weaponName: Machine Gun
+    baseDamage: 10
+    attackRangeMin: 1
+    attackRangeMax: 1
+    canAttackVehicle: 1
+    canAttackSoldier: 1
+    requiresStationaryToAttack: 0
+    damageMatrix:
+    - targetUnitId: Lancel_Infantry
+      damagePercent: 55
+    - targetUnitId: Lancel_Mech
+      damagePercent: 45
+    - targetUnitId: Lancel_Recon
+      damagePercent: 12
+    - targetUnitId: Lancel_APC
+      damagePercent: 14
+    - targetUnitId: Lancel_Artillery
+      damagePercent: 15
+    - targetUnitId: Lancel_Tank
+      damagePercent: 5
+    - targetUnitId: Lancel_MediumTank
+      damagePercent: 1
+    - targetUnitId: Lancel_MegaTank
+      damagePercent: 1
+    - targetUnitId: Lancel_Rocket
+      damagePercent: 25
+  primaryAmmoCapacity: 9

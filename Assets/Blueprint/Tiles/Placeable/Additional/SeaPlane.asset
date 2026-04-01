@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb4b61a2248c7d4ead7dc6a9b70e56b, type: 3}
+  m_Name: SeaPlane
+  m_EditorClassIdentifier: 
+  id: SeaPlane
+  displayName: SeaPlane
+  prefab: {fileID: 671095537292902853, guid: a47476c701f4e9a47a634b20f7d4215d, type: 3}
+  prefabNativeSize: 3
+  pivot: 0
+  allowedBases:
+  - {fileID: 11400000, guid: 1014a2a75ee528e4cb16e84edce60bba, type: 2}
+  - {fileID: 11400000, guid: c429220ec104cf54d9be4d4971be93b9, type: 2}
+  - {fileID: 11400000, guid: 4b651c1eb478234469667248e0e85980, type: 2}
+  - {fileID: 11400000, guid: 38ca551b213beb54bb96de5f9e965191, type: 2}
+  - {fileID: 11400000, guid: a83a8c1f403043f4b893b4df0a4da2ce, type: 2}
+  - {fileID: 11400000, guid: 829cc1a4ab239fe48ab3d3a6f381e1b0, type: 2}
+  - {fileID: 11400000, guid: 65d4f965d762c1840947ee505678c1bc, type: 2}
+  - {fileID: 11400000, guid: 174519fb18a662544b46822fdb330915, type: 2}
+  - {fileID: 11400000, guid: e5d0f0ecc2415804389701f915b425f4, type: 2}
+  - {fileID: 11400000, guid: 606094cac3182ee4289792e22df16401, type: 2}
+  - {fileID: 11400000, guid: 5c4f5cc57dceeaa4997561a5a984dc0f, type: 2}
+  - {fileID: 11400000, guid: efe7a7f31539b7a49a49cb54f63d62b6, type: 2}
+  - {fileID: 11400000, guid: d24929b27d6a70a44915736f6e9c6bc8, type: 2}
+  - {fileID: 11400000, guid: 6634f0ff8ef3ee6409cdd6d147fd8b2c, type: 2}
+  - {fileID: 11400000, guid: 0ad03db90065089469f648e9744cf906, type: 2}
+  - {fileID: 11400000, guid: 730bcbe18760b5e449eb5c577102c116, type: 2}
+  - {fileID: 11400000, guid: 730bcbe18760b5e449eb5c577102c116, type: 2}

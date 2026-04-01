@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1aa31607052a0340a3c712bb23104d9, type: 3}
+  m_Name: Marigold_NeoTank
+  m_EditorClassIdentifier: 
+  _legacyMigrated: 1
+  canAttack: 1
+  attackRangeMin: 1
+  attackRangeMax: 1
+  primaryWeaponDamage: 10
+  secondaryWeaponDamage: 5
+  primaryDamageMatrix: []
+  secondaryDamageMatrix: []
+  id: Marigold_NeoTank
+  displayName: Marigold_NeoTank
+  Description: 
+  cost: 1000
+  prefab: {fileID: 676298097290912770, guid: ba37461cdd0377e44b0801d3f30a3af8, type: 3}
+  maxHp: 10
+  maxFuel: 99
+  maxAmmo: 9
+  movementRange: 3
+  movementType: 0
+  visionRange: 2
+  category: 0
+  hasPrimaryWeapon: 1
+  primaryWeapon:
+    weaponName: Primary Weapon
+    baseDamage: 10
+    attackRangeMin: 1
+    attackRangeMax: 1
+    canAttackVehicle: 1
+    canAttackSoldier: 1
+    damageMatrix: []
+  hasSecondaryWeapon: 1
+  secondaryWeapon:
+    weaponName: Secondary Weapon
+    baseDamage: 5
+    attackRangeMin: 1
+    attackRangeMax: 1
+    canAttackVehicle: 1
+    canAttackSoldier: 0
+    damageMatrix: []
+  primaryAmmoCapacity: 9

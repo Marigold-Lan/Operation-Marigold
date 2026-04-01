@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1aa31607052a0340a3c712bb23104d9, type: 3}
+  m_Name: Marigold_Artillery
+  m_EditorClassIdentifier: 
+  _legacyMigrated: 1
+  canAttack: 1
+  attackRangeMin: 1
+  attackRangeMax: 1
+  primaryWeaponDamage: 10
+  secondaryWeaponDamage: 5
+  primaryDamageMatrix: []
+  secondaryDamageMatrix: []
+  id: Marigold_Artillery
+  displayName: Artillery
+  Description: 
+  cost: 6000
+  prefab: {fileID: 6487380945210899958, guid: cccfc3e84a8f68a4ebdba763b9f02c33, type: 3}
+  maxHp: 10
+  maxFuel: 50
+  maxAmmo: 9
+  movementRange: 5
+  movementType: 2
+  visionRange: 1
+  category: 0
+  hasPrimaryWeapon: 1
+  primaryWeapon:
+    weaponName: Artillery Cannon
+    baseDamage: 10
+    attackRangeMin: 2
+    attackRangeMax: 3
+    canAttackVehicle: 1
+    canAttackSoldier: 1
+    requiresStationaryToAttack: 1
+    damageMatrix:
+    - targetUnitId: Lancel_Infantry
+      damagePercent: 90
+    - targetUnitId: Lancel_Mech
+      damagePercent: 85
+    - targetUnitId: Lancel_Recon
+      damagePercent: 80
+    - targetUnitId: Lancel_APC
+      damagePercent: 70
+    - targetUnitId: Lancel_Artillery
+      damagePercent: 75
+    - targetUnitId: Lancel_Tank
+      damagePercent: 70
+    - targetUnitId: Lancel_MediumTank
+      damagePercent: 45
+    - targetUnitId: Lancel_MegaTank
+      damagePercent: 15
+    - targetUnitId: Lancel_Rocket
+      damagePercent: 80
+  hasSecondaryWeapon: 0
+  secondaryWeapon:
+    weaponName: Secondary Weapon
+    baseDamage: 5
+    attackRangeMin: 1
+    attackRangeMax: 1
+    canAttackVehicle: 1
+    canAttackSoldier: 1
+    requiresStationaryToAttack: 0
+    damageMatrix:
+    - targetUnitId: 
+      damagePercent: 0
+  primaryAmmoCapacity: 9

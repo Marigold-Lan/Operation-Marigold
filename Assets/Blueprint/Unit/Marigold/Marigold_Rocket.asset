@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1aa31607052a0340a3c712bb23104d9, type: 3}
+  m_Name: Marigold_Rocket
+  m_EditorClassIdentifier: 
+  _legacyMigrated: 1
+  canAttack: 1
+  attackRangeMin: 3
+  attackRangeMax: 5
+  primaryWeaponDamage: 10
+  secondaryWeaponDamage: 5
+  primaryDamageMatrix: []
+  secondaryDamageMatrix: []
+  id: Marigold_Rocket
+  displayName: Rocket
+  Description: 
+  cost: 15000
+  prefab: {fileID: 5546887929643857099, guid: 3163a646dd0001747b2cea478c962b99, type: 3}
+  maxHp: 10
+  maxFuel: 50
+  maxAmmo: 9
+  movementRange: 5
+  movementType: 1
+  visionRange: 1
+  category: 0
+  hasPrimaryWeapon: 1
+  primaryWeapon:
+    weaponName: Rocket Launcher
+    baseDamage: 10
+    attackRangeMin: 3
+    attackRangeMax: 5
+    canAttackVehicle: 1
+    canAttackSoldier: 1
+    requiresStationaryToAttack: 1
+    damageMatrix:
+    - targetUnitId: Lancel_Infantry
+      damagePercent: 95
+    - targetUnitId: Lancel_Mech
+      damagePercent: 90
+    - targetUnitId: Lancel_Recon
+      damagePercent: 90
+    - targetUnitId: Lancel_APC
+      damagePercent: 80
+    - targetUnitId: Lancel_Artillery
+      damagePercent: 80
+    - targetUnitId: Lancel_Tank
+      damagePercent: 80
+    - targetUnitId: Lancel_MediumTank
+      damagePercent: 55
+    - targetUnitId: Lancel_MegaTank
+      damagePercent: 25
+    - targetUnitId: Lancel_Rocket
+      damagePercent: 85
+  hasSecondaryWeapon: 0
+  secondaryWeapon:
+    weaponName: Secondary Weapon
+    baseDamage: 5
+    attackRangeMin: 1
+    attackRangeMax: 1
+    canAttackVehicle: 1
+    canAttackSoldier: 1
+    requiresStationaryToAttack: 0
+    damageMatrix: []
+  primaryAmmoCapacity: 6

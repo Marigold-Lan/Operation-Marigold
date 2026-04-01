@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c4428e80063df419dd85dc789bfc85, type: 3}
+  m_Name: MovementTypeIconConfig
+  m_EditorClassIdentifier: 
+  _footIcon: {fileID: 21300000, guid: b01983ccc8bb89f4990322bd61d22a44, type: 3}
+  _mechIcon: {fileID: 21300000, guid: 9ce662a22d4771243a858c5ae8de114e, type: 3}
+  _wheeledIcon: {fileID: 21300000, guid: ecda0996c14db1a4aa21cad228002ec0, type: 3}
+  _treadsIcon: {fileID: 21300000, guid: f6da3a66efaa93d43875beb023193fb4, type: 3}

@@ -1,0 +1,4 @@
+
+
+# Unity .meta (GUID, import settings) - exclude from Cursor index/context
+**/*.meta

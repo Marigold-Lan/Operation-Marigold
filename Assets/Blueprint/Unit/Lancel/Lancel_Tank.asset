@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1aa31607052a0340a3c712bb23104d9, type: 3}
+  m_Name: Lancel_Tank
+  m_EditorClassIdentifier: 
+  _legacyMigrated: 1
+  canAttack: 1
+  attackRangeMin: 1
+  attackRangeMax: 1
+  primaryWeaponDamage: 10
+  secondaryWeaponDamage: 5
+  primaryDamageMatrix:
+  - targetUnitId: Lancel_Tank
+    damagePercent: 55
+  secondaryDamageMatrix:
+  - targetUnitId: Lancel_Tank
+    damagePercent: 55
+  id: Lancel_Tank
+  displayName: Tank
+  Description: 
+  cost: 7000
+  prefab: {fileID: 775137032049116284, guid: efed26cbb30df454e8c89afd46b89c9d, type: 3}
+  maxHp: 10
+  maxFuel: 70
+  maxAmmo: 9
+  movementRange: 6
+  movementType: 2
+  visionRange: 3
+  category: 0
+  hasPrimaryWeapon: 1
+  primaryWeapon:
+    weaponName: Cannon
+    baseDamage: 10
+    attackRangeMin: 1
+    attackRangeMax: 1
+    canAttackVehicle: 1
+    canAttackSoldier: 0
+    requiresStationaryToAttack: 0
+    damageMatrix:
+    - targetUnitId: Marigold_Recon
+      damagePercent: 85
+    - targetUnitId: Marigold_APC
+      damagePercent: 75
+    - targetUnitId: Marigold_Artillery
+      damagePercent: 70
+    - targetUnitId: Marigold_Tank
+      damagePercent: 55
+    - targetUnitId: Marigold_MediumTank
+      damagePercent: 15
+    - targetUnitId: Marigold_MegaTank
+      damagePercent: 10
+    - targetUnitId: Marigold_Rocket
+      damagePercent: 85
+  hasSecondaryWeapon: 1
+  secondaryWeapon:
+    weaponName: Machine Gun
+    baseDamage: 10
+    attackRangeMin: 1
+    attackRangeMax: 1
+    canAttackVehicle: 1
+    canAttackSoldier: 1
+    requiresStationaryToAttack: 0
+    damageMatrix:
+    - targetUnitId: Marigold_Infantry
+      damagePercent: 75
+    - targetUnitId: Marigold_Mech
+      damagePercent: 70
+    - targetUnitId: Marigold_Recon
+      damagePercent: 40
+    - targetUnitId: Marigold_APC
+      damagePercent: 45
+    - targetUnitId: Marigold_Artillery
+      damagePercent: 45
+    - targetUnitId: Marigold_Tank
+      damagePercent: 6
+    - targetUnitId: Marigold_MediumTank
+      damagePercent: 1
+    - targetUnitId: Marigold_MegaTank
+      damagePercent: 1
+    - targetUnitId: Marigold_Rocket
+      damagePercent: 55
+  primaryAmmoCapacity: 9

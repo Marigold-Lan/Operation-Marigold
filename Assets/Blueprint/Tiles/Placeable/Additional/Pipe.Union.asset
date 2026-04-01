@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb4b61a2248c7d4ead7dc6a9b70e56b, type: 3}
+  m_Name: Pipe.Union
+  m_EditorClassIdentifier: 
+  id: Pipe.Union
+  displayName: Pipe.Union
+  prefab: {fileID: 6869864890365598198, guid: e80bdf3fec98ec3499ffa6ca66d5df2e, type: 3}
+  prefabNativeSize: 3
+  pivot: 0
+  allowedBases:
+  - {fileID: 11400000, guid: 8848e932d187ba940b06cd5816e0ee83, type: 2}

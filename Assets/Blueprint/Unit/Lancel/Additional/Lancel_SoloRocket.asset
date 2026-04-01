@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1aa31607052a0340a3c712bb23104d9, type: 3}
+  m_Name: Lancel_SoloRocket
+  m_EditorClassIdentifier: 
+  id: Lancel_SoloRocket
+  displayName: Lancel_SoloRocket
+  cost: 1000
+  prefab: {fileID: 2124914256281076257, guid: 339f26da483ecac408dc575800afa9dd, type: 3}
+  maxHp: 10
+  maxFuel: 99
+  maxAmmo: 9
+  movementRange: 3
+  movementType: 0
+  visionRange: 2
+  primaryWeaponDamage: 10
+  secondaryWeaponDamage: 5
+  canAttack: 1
+  attackRangeMin: 1
+  attackRangeMax: 1
+  primaryDamageMatrix: []
+  secondaryDamageMatrix: []

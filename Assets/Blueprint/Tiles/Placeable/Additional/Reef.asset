@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb4b61a2248c7d4ead7dc6a9b70e56b, type: 3}
+  m_Name: Reef
+  m_EditorClassIdentifier: 
+  id: Reef
+  displayName: Reef
+  prefab: {fileID: 1099290769709138472, guid: 933b3260a8d13394aa01bda168b17067, type: 3}
+  prefabNativeSize: 3
+  pivot: 0
+  allowedBases:
+  - {fileID: 11400000, guid: 2b3dc332371d6a24baf38b5b3541b07b, type: 2}
+  - {fileID: 11400000, guid: 5c96551d7ad0bfe4a9b7c5eab70cb09c, type: 2}

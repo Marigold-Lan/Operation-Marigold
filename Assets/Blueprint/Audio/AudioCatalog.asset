@@ -1,0 +1,390 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1648ba1463b2cc64bbe2a6c132ded678, type: 3}
+  m_Name: AudioCatalog
+  m_EditorClassIdentifier: 
+  _defaults:
+    uiVolumeRange: {x: 0.9, y: 1}
+    uiPitchRange: {x: 1, y: 1}
+    uiCooldownSec: 0.02
+    uiMaxVoices: 2
+    uiSpatialBlend: 0
+    uiLoop: 0
+    uiPriority: 80
+    sfxVolumeRange: {x: 0.9, y: 1}
+    sfxPitchRange: {x: 0.97, y: 1.03}
+    sfxCooldownSec: 0.03
+    sfxMaxVoices: 4
+    sfxSpatialBlend: 0.25
+    sfxLoop: 0
+    sfxPriority: 96
+    bgmVolumeRange: {x: 0.8, y: 0.8}
+    bgmPitchRange: {x: 1, y: 1}
+    bgmCooldownSec: 0
+    bgmMaxVoices: 1
+    bgmSpatialBlend: 0
+    bgmLoop: 1
+    bgmPriority: 32
+  _entries:
+  - cueId: 10
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 39c45c387419b54468855910f6547ca1, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 1, y: 1}
+      cooldownSec: 0.02
+      maxVoices: 2
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0
+      loop: 0
+      priority: 80
+  - cueId: 11
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 789031f9b6b63334686e098abddbfbaa, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 1, y: 1}
+      cooldownSec: 0.02
+      maxVoices: 2
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0
+      loop: 0
+      priority: 80
+  - cueId: 12
+    cue:
+      clips:
+      - {fileID: 8300000, guid: c7dfd804c40c0124db1916225cf81bd4, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 1, y: 1}
+      cooldownSec: 0.02
+      maxVoices: 2
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0
+      loop: 0
+      priority: 80
+  - cueId: 13
+    cue:
+      clips:
+      - {fileID: 8300000, guid: bc11dda8552c4e74baa5a71f54c2f885, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 1, y: 1}
+      cooldownSec: 0.02
+      maxVoices: 2
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0
+      loop: 0
+      priority: 80
+  - cueId: 14
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 70d350f48aea55340bbaf96f5832055c, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 1, y: 1}
+      cooldownSec: 0.02
+      maxVoices: 2
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0
+      loop: 0
+      priority: 80
+  - cueId: 15
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 2d44ea2776e536d4796f6d23c1ae9618, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 1, y: 1}
+      cooldownSec: 0.02
+      maxVoices: 2
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0
+      loop: 0
+      priority: 80
+  - cueId: 16
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 62d868129fa221b4bad8be0766488543, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 1, y: 1}
+      cooldownSec: 0.02
+      maxVoices: 2
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0
+      loop: 0
+      priority: 80
+  - cueId: 100
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 3bc09b3dd0c25374e93c58a8597be606, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 101
+    cue:
+      clips: []
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 102
+    cue:
+      clips: []
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 103
+    cue:
+      clips: []
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 104
+    cue:
+      clips: []
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 105
+    cue:
+      clips:
+      - {fileID: 8300000, guid: dc2961926d172f54c8abaf44645e9cff, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 106
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 9bc517cc5b62a4e43b755b9ad6063946, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 107
+    cue:
+      clips:
+      - {fileID: 8300000, guid: bd09e0263f9b0a948bd3a38580f4ed21, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 108
+    cue:
+      clips: []
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 109
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 5a7b2143328494c4c9b301289932807b, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 110
+    cue:
+      clips:
+      - {fileID: 8300000, guid: f40eb3e4868308b42a2f5a06f7a9dbd1, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 111
+    cue:
+      clips: []
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 112
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 23328be352df7224aa5a7d76d194ab8d, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 113
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 85eca6cb5f3aa8f48baaf46969d79cfa, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 114
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 6194bc72f13df304892415c864163f6d, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 115
+    cue:
+      clips:
+      - {fileID: 8300000, guid: d251f292f3117d54eb6b3ea73e529f0b, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 116
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 4eb1b812630d0fa4ca64ffe19225c946, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 117
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 40786e3fe02f2de4083f5ebb6c8a0998, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 118
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 40786e3fe02f2de4083f5ebb6c8a0998, type: 3}
+      volumeRange: {x: 0.9, y: 1}
+      pitchRange: {x: 0.97, y: 1.03}
+      cooldownSec: 0.03
+      maxVoices: 4
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0.25
+      loop: 0
+      priority: 96
+  - cueId: 1000
+    cue:
+      clips: []
+      volumeRange: {x: 0.8, y: 0.8}
+      pitchRange: {x: 1, y: 1}
+      cooldownSec: 0
+      maxVoices: 1
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0
+      loop: 1
+      priority: 32
+  - cueId: 1001
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 87a2b3b8c8b4bf945b0df67a7c5fe475, type: 3}
+      volumeRange: {x: 0.2, y: 0.2}
+      pitchRange: {x: 1, y: 1}
+      cooldownSec: 0
+      maxVoices: 1
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0
+      loop: 1
+      priority: 32
+  - cueId: 1002
+    cue:
+      clips:
+      - {fileID: 8300000, guid: 232032cb48b7ab9479b8d105b5d87e65, type: 3}
+      volumeRange: {x: 0.5, y: 0.5}
+      pitchRange: {x: 1, y: 1}
+      cooldownSec: 0
+      maxVoices: 1
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0
+      loop: 1
+      priority: 32
+  - cueId: 1003
+    cue:
+      clips:
+      - {fileID: 8300000, guid: b2464af774916e040a3767de75edc8c1, type: 3}
+      volumeRange: {x: 0.5, y: 0.5}
+      pitchRange: {x: 1, y: 1}
+      cooldownSec: 0
+      maxVoices: 1
+      mixerGroup: {fileID: 0}
+      spatialBlend: 0
+      loop: 1
+      priority: 32
