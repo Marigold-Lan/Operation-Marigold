@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public static class FixMissingMeshRendererMaterial0Tool
 {
@@ -23,7 +24,7 @@ public static class FixMissingMeshRendererMaterial0Tool
             return;
         }
 
-        var renderers = UnityEngine.Object.FindObjectsByType<MeshRenderer>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        var renderers = Object.FindObjectsByType<MeshRenderer>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         var scannedCount = 0;
         var fixedCount = 0;
 
@@ -66,7 +67,7 @@ public static class FixMissingMeshRendererMaterial0Tool
     [MenuItem(MenuPath, true)]
     private static bool ValidateFix()
     {
-        var renderers = UnityEngine.Object.FindObjectsByType<MeshRenderer>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        var renderers = Object.FindObjectsByType<MeshRenderer>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         for (var i = 0; i < renderers.Length; i++)
         {
             var r = renderers[i];

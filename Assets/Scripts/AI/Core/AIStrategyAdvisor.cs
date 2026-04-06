@@ -130,12 +130,12 @@ namespace OperationMarigold.AI.Core
             float uv = 1f, bld = 1f, cap = 1f, pos = 1f, funds = 1f;
             float hqGuard = 0f;
             int atkBonus = 0, capBonus = 0;
-            int loadBonus = 40, dropBonus = 40, supplyBonus = 50;
+            int loadBonus = 155, dropBonus = 300, supplyBonus = 50;
             float solMul = 1f, vehMul = 1f;
             float cheapBias = 0f;
             float reserveMul = 1f;
             float factoryCaptureUrgency = 1f;
-            float logisticsPressure = 0.25f;
+            float logisticsPressure = 0.42f;
             int rangedSafetyDistance = 3;
             IdleStrategicFocus focus = IdleStrategicFocus.PushEnemyHq;
 
@@ -147,12 +147,12 @@ namespace OperationMarigold.AI.Core
                     cap = 0.85f;
                     atkBonus = 120;
                     capBonus = 40;
-                    loadBonus = 140;
-                    dropBonus = 220;
+                    loadBonus = 290;
+                    dropBonus = 390;
                     solMul = 0.92f;
                     vehMul = 1.12f;
                     reserveMul = 1.18f;
-                    logisticsPressure = 0.4f;
+                    logisticsPressure = 0.58f;
                     rangedSafetyDistance = 4;
                     focus = hasEnemyHq ? IdleStrategicFocus.PushEnemyHq : IdleStrategicFocus.HarassFrontline;
                     break;
@@ -165,6 +165,8 @@ namespace OperationMarigold.AI.Core
                     hqGuard = enemyNearMyHq > 0 ? 2.2f : 1.4f;
                     atkBonus = 180;
                     capBonus = 20;
+                    loadBonus = 360;
+                    dropBonus = 340;
                     supplyBonus = 200;
                     solMul = 0.85f;
                     vehMul = 1.2f;
@@ -181,14 +183,14 @@ namespace OperationMarigold.AI.Core
                     pos = 0.9f;
                     capBonus = 100;
                     atkBonus = 60;
-                    loadBonus = 180;
-                    dropBonus = 200;
+                    loadBonus = 320;
+                    dropBonus = 360;
                     supplyBonus = 180;
                     solMul = 1.08f;
                     vehMul = 1.05f;
                     reserveMul = 1.08f;
                     factoryCaptureUrgency = 1.35f;
-                    logisticsPressure = 0.6f;
+                    logisticsPressure = 0.72f;
                     focus = IdleStrategicFocus.SecureIncome;
                     break;
 
@@ -201,15 +203,15 @@ namespace OperationMarigold.AI.Core
                     hqGuard = 2.8f;
                     capBonus = 220;
                     atkBonus = 90;
-                    loadBonus = 260;
-                    dropBonus = 280;
+                    loadBonus = 420;
+                    dropBonus = 470;
                     supplyBonus = 160;
                     solMul = 1.25f;
                     vehMul = 0.95f;
                     cheapBias = fundsTight ? 0.35f : 0.15f;
                     reserveMul = 0.92f;
                     factoryCaptureUrgency = 1.6f;
-                    logisticsPressure = 0.85f;
+                    logisticsPressure = 0.95f;
                     focus = hasMyHq ? IdleStrategicFocus.DefendMyHq : IdleStrategicFocus.SecureIncome;
                     break;
 
@@ -219,22 +221,22 @@ namespace OperationMarigold.AI.Core
                     pos = 0.85f;
                     capBonus = 160;
                     atkBonus = 70;
-                    loadBonus = 240;
-                    dropBonus = 300;
+                    loadBonus = 390;
+                    dropBonus = 500;
                     solMul = 1.22f;
                     vehMul = 0.92f;
                     cheapBias = fundsTight ? 0.25f : 0f;
                     reserveMul = 0.95f;
                     factoryCaptureUrgency = 1.85f;
-                    logisticsPressure = 0.75f;
+                    logisticsPressure = 0.88f;
                     focus = IdleStrategicFocus.SecureIncome;
                     break;
 
                 default:
                     atkBonus = 40;
                     capBonus = 60;
-                    loadBonus = 80;
-                    dropBonus = 100;
+                    loadBonus = 210;
+                    dropBonus = 245;
                     supplyBonus = 80;
                     break;
             }

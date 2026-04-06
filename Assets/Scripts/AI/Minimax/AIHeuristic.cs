@@ -11,6 +11,12 @@ namespace OperationMarigold.AI.Minimax
     /// </summary>
     public class AIHeuristic : IHeuristic
     {
+        private static readonly Vector2Int[] AdjacentDirs =
+        {
+            new Vector2Int(1, 0), new Vector2Int(-1, 0),
+            new Vector2Int(0, 1), new Vector2Int(0, -1)
+        };
+
         private readonly int _aiPlayerId;
         private readonly AIDifficultyProfile _profile;
         private readonly AIStrategyContext _strategy;
@@ -204,8 +210,8 @@ namespace OperationMarigold.AI.Minimax
                 case AIActionType.Capture: s = 800; break;
                 case AIActionType.Move:    s = 400; break;
                 case AIActionType.Supply:  s = 300; break;
-                case AIActionType.Load:    s = 200; break;
-                case AIActionType.Drop:    s = 200; break;
+                case AIActionType.Load:    s = 560; break;
+                case AIActionType.Drop:    s = 640; break;
                 case AIActionType.Wait:    s = 100; break;
                 case AIActionType.EndTurn: s = 50; break;
                 default: return 0;
@@ -265,9 +271,17 @@ namespace OperationMarigold.AI.Minimax
                 }
             }
             if (a.actionType == AIActionType.Load)
-                s += strat.ActionLoadSortBonus + Mathf.RoundToInt(80f * strat.FrontlineLogisticsPressure);
+            {
+                s += strat.ActionLoadSortBonus + Mathf.RoundToInt(210f * strat.FrontlineLogisticsPressure);
+                if (board != null && opponentId >= 0)
+                    s += EvaluateInfantryLoadDecision(board, a, opponentId);
+            }
             if (a.actionType == AIActionType.Drop)
-                s += strat.ActionDropSortBonus + Mathf.RoundToInt(95f * strat.FrontlineLogisticsPressure);
+            {
+                s += strat.ActionDropSortBonus + Mathf.RoundToInt(255f * strat.FrontlineLogisticsPressure);
+                if (board != null && opponentId >= 0)
+                    s += EvaluateApcDropDecision(board, a, opponentId, strat);
+            }
             if (a.actionType == AIActionType.Supply)
                 s += strat.ActionSupplySortBonus + Mathf.RoundToInt(120f * strat.FrontlineLogisticsPressure);
 
@@ -401,6 +415,169 @@ namespace OperationMarigold.AI.Minimax
             }
 
             return total;
+        }
+
+        /// <summary>
+        /// 步兵上车：保护残血、脱离威胁、让 APC 更接近可争夺地产/敌 HQ。
+        /// </summary>
+        private int EvaluateInfantryLoadDecision(AIBoardState board, AIAction a, int opponentId)
+        {
+            if (a.unitIndex < 0 || a.targetUnitIndex < 0 ||
+                a.unitIndex >= board.units.Count || a.targetUnitIndex >= board.units.Count)
+                return 0;
+
+            var cargo = board.units[a.unitIndex];
+            var trans = board.units[a.targetUnitIndex];
+            if (!cargo.alive || !trans.alive || !cargo.IsOnMap)
+                return 0;
+
+            int bonus = 0;
+            float hpPct = cargo.hp / (float)Mathf.Max(1, cargo.maxHp);
+            hpPct = Mathf.Clamp01(hpPct);
+
+            bonus += Mathf.RoundToInt(cargo.cost * (0.36f + 0.62f * (1f - hpPct)));
+            bonus += Mathf.RoundToInt(160f * (1f - hpPct));
+
+            int enemiesNear = CountEnemyUnitsInRadius(board, cargo.gridCoord, 2, opponentId);
+            if (enemiesNear > 0)
+                bonus += Mathf.Min(560, enemiesNear * 130);
+
+            int dCargo = MinManhattanToContestProperty(board, cargo.gridCoord, opponentId);
+            int dTrans = MinManhattanToContestProperty(board, trans.gridCoord, opponentId);
+            int logisticsGain = dCargo - dTrans;
+            if (logisticsGain > 0)
+                bonus += Mathf.Min(520, logisticsGain * 22);
+
+            int embarked = board.CountEmbarkedCargo(a.targetUnitIndex);
+            if (embarked > 0 && embarked < trans.transportCapacity)
+                bonus += 70;
+
+            return bonus;
+        }
+
+        /// <summary>
+        /// APC 卸载：卸载格与邻格的占领价值、高价值步兵投送、避免无脑卸在敌军脸上。
+        /// </summary>
+        private int EvaluateApcDropDecision(AIBoardState board, AIAction a, int opponentId, AIStrategyContext strat)
+        {
+            int cargoIdx = a.targetUnitIndex;
+            Vector2Int drop = a.targetCoord;
+            if (!board.IsInBounds(drop) || cargoIdx < 0 || cargoIdx >= board.units.Count)
+                return 0;
+
+            var cargo = board.units[cargoIdx];
+            if (!cargo.alive)
+                return 0;
+
+            int bonus = 0;
+            float hpPct = cargo.hp / (float)Mathf.Max(1, cargo.maxHp);
+            hpPct = Mathf.Clamp01(hpPct);
+            bonus += Mathf.RoundToInt(cargo.cost * (0.22f + 0.46f * hpPct));
+
+            int objectiveScore = ScoreDropCellCaptureObjective(board, drop, opponentId, strat);
+            bonus += Mathf.RoundToInt(objectiveScore * 1.15f);
+
+            bonus += Mathf.RoundToInt(ScoreDropAdjacentCapturePressure(board, drop, opponentId, strat) * 1.2f);
+
+            int meleeThreat = CountEnemyUnitsInRadius(board, drop, 1, opponentId);
+            if (meleeThreat > 0)
+            {
+                int threatPenalty = Mathf.Min(260, meleeThreat * 62);
+                if (objectiveScore >= 200)
+                    threatPenalty = Mathf.RoundToInt(threatPenalty * 0.45f);
+                bonus -= threatPenalty;
+            }
+
+            return bonus;
+        }
+
+        private int MinManhattanToContestProperty(AIBoardState board, Vector2Int from, int opponentId)
+        {
+            int best = 999;
+            for (int i = 0; i < board.buildings.Count; i++)
+            {
+                var b = board.buildings[i];
+                if ((int)b.ownerFaction == _aiPlayerId)
+                    continue;
+
+                int d = board.ManhattanDistance(from, b.gridCoord);
+                if (d < best)
+                    best = d;
+            }
+
+            return best >= 999 ? 0 : best;
+        }
+
+        private int ScoreDropCellCaptureObjective(
+            AIBoardState board, Vector2Int coord, int opponentId, AIStrategyContext strat)
+        {
+            if (!board.IsInBounds(coord))
+                return 0;
+
+            ref var cell = ref board.grid[coord.x, coord.y];
+            int bIdx = cell.buildingIndex;
+            if (bIdx < 0 || bIdx >= board.buildings.Count)
+                return 0;
+
+            var b = board.buildings[bIdx];
+            if (b.maxCaptureHp <= 0 || (int)b.ownerFaction == _aiPlayerId)
+                return 0;
+
+            int s = 0;
+            float captureProgress = 1f - (b.captureHp / (float)Mathf.Max(1, b.maxCaptureHp));
+            captureProgress = Mathf.Clamp01(captureProgress);
+            s += Mathf.RoundToInt(280f * captureProgress * strat.FactoryCaptureUrgency);
+
+            bool isEnemy = (int)b.ownerFaction == opponentId;
+            bool isNeutral = b.ownerFaction == UnitFaction.None;
+            if (b.isHq && isEnemy)
+            {
+                s += 480;
+                int hqEnemyRing = CountEnemyUnitsInRadius(board, coord, 3, opponentId);
+                if (hqEnemyRing == 0) s += 260;
+                else if (hqEnemyRing <= 1) s += 130;
+            }
+            else if (isEnemy)
+            {
+                s += b.isFactory ? 220 : 160;
+            }
+            else if (isNeutral)
+            {
+                s += 95;
+            }
+
+            return s;
+        }
+
+        private int ScoreDropAdjacentCapturePressure(
+            AIBoardState board, Vector2Int drop, int opponentId, AIStrategyContext strat)
+        {
+            int total = 0;
+            for (int d = 0; d < 4; d++)
+            {
+                var n = drop + AdjacentDirs[d];
+                if (!board.IsInBounds(n))
+                    continue;
+
+                ref var cell = ref board.grid[n.x, n.y];
+                int bIdx = cell.buildingIndex;
+                if (bIdx < 0 || bIdx >= board.buildings.Count)
+                    continue;
+
+                var b = board.buildings[bIdx];
+                if (b.maxCaptureHp <= 0 || (int)b.ownerFaction == _aiPlayerId)
+                    continue;
+
+                float urgency = strat.FactoryCaptureUrgency;
+                if (b.isHq && (int)b.ownerFaction == opponentId)
+                    total += Mathf.RoundToInt(140f * urgency);
+                else if ((int)b.ownerFaction == opponentId)
+                    total += Mathf.RoundToInt((b.isFactory ? 72f : 52f) * urgency);
+                else if (b.ownerFaction == UnitFaction.None)
+                    total += Mathf.RoundToInt(38f * urgency);
+            }
+
+            return Mathf.Min(220, total);
         }
 
         private int EvaluateBuildingApproachActionBonus(AIBoardState board, Vector2Int coord, int opponentId)
