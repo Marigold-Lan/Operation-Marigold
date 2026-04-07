@@ -1,4 +1,4 @@
-![marigold 回合轮转与敌人AI5](https://github.com/user-attachments/assets/9665e011-b1f5-4cc7-9ee5-f780a5baa2be)# Operation Marigold
+# Operation Marigold
 
 使用Unity开发的类《高级战争》回合制战棋项目，核心聚焦于运行时玩法层与AI模拟层共享同一套规则逻辑，并通过门面、事件驱动、ScriptableObject数据配置与组件化单位架构，构建出可扩展的网格回合系统。
 
