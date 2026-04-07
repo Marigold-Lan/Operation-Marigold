@@ -1,12 +1,43 @@
-# Operation Marigold
+![marigold 回合轮转与敌人AI5](https://github.com/user-attachments/assets/9665e011-b1f5-4cc7-9ee5-f780a5baa2be)# Operation Marigold
 
-使用Unity开发的回合制战棋项目，核心聚焦于运行时玩法层与AI模拟层共享同一套规则逻辑，并通过门面、事件驱动、ScriptableObject数据配置与组件化单位架构，构建出可扩展的网格回合系统。
+使用Unity开发的类《高级战争》回合制战棋项目，核心聚焦于运行时玩法层与AI模拟层共享同一套规则逻辑，并通过门面、事件驱动、ScriptableObject数据配置与组件化单位架构，构建出可扩展的网格回合系统。
 
 ---
 
-## 🎮 玩法介绍
+## 🎮 玩法介绍 与 部分游戏画面演示
 
 玩家在方格地图上操作不同阵营的部队进行移动、攻击、占领、补给、装载与投放，围绕总部争夺、工厂造兵与资金运营展开回合制对抗。核心循环包含：回合开始收取建筑收入并刷新己方单位状态、选择单位规划移动与指令、利用地形和兵种克制进行交战、通过步兵持续占领建筑扩大优势，最终击破或夺取敌方关键据点。项目当前还集成了AI行动生成、模拟与执行链路，可在相同规则下驱动非玩家阵营完成完整回合。
+1.显示移动范围与确定移动路径
+
+![marigold BFS与 A](https://github.com/user-attachments/assets/8a81fa75-b622-4447-b39f-13d01d34cd2e)
+
+2.攻击范围与攻击指令
+
+![marigold 攻击指令](https://github.com/user-attachments/assets/b526b2da-c472-4dbd-b907-d38e7efd5f52)
+
+3.单位的装载、卸载
+
+![marigold 装载卸载，协同](https://github.com/user-attachments/assets/d4c19c3c-3ed1-42ea-b412-9515cb6d0956)
+
+4.单位的补给命令
+
+![marigold 补给](https://github.com/user-attachments/assets/54679ecc-be3b-4f11-88e3-8c846157c9fb)
+
+5.单位的占领建筑物命令
+
+![marigold 占领建筑物](https://github.com/user-attachments/assets/58d105f9-acc9-4c74-a148-35f1b5210143)
+
+6.工厂可生产单位
+
+![marigold 工厂](https://github.com/user-attachments/assets/405a20c3-921f-4f52-8b5d-05b55d8edbf1)
+
+7.实时战报系统（虚拟滑动列表）
+
+![marigold 战报](https://github.com/user-attachments/assets/5c71b04a-8b00-43ae-b96b-14d5be5567b6)
+
+8.基于行为树与Minimax的敌人AI
+
+![marigold 回合轮转与敌人AI5](https://github.com/user-attachments/assets/4bd2d20b-4a0d-4bd6-bf7f-52c1e4b77699)
 
 ---
 
