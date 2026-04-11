@@ -1,0 +1,7 @@
+# 自动处理文本文件，所有文本文件在检入仓库时统一转为 LF
+* text=auto eol=lf
+# 确保 Unity 特有的二进制资源不被误当做文本处理
+*.asset binary
+*.unity binary
+*.prefab binary
+*.mat binary
