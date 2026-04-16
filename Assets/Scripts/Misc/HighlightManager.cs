@@ -62,6 +62,15 @@ public class HighlightManager : Singleton<HighlightManager>
     private readonly List<GameObject> _supplyHighlightInstances = new List<GameObject>();
     private readonly List<GameObject> _loadHighlightInstances = new List<GameObject>();
     private readonly List<GameObject> _dropHighlightInstances = new List<GameObject>();
+
+    private HighlightPool _friendlyMovePool;
+    private HighlightPool _enemyMovePool;
+    private HighlightPool _attackRangeEnemyPool;
+    private HighlightPool _attackRangeOtherPool;
+    private HighlightPool _supplyPool;
+    private HighlightPool _loadPool;
+    private HighlightPool _dropPool;
+
     public bool HasRangeHighlights =>
         _moveHighlightInstances.Count > 0 ||
         _attackHighlightInstances.Count > 0 ||
@@ -83,6 +92,18 @@ public class HighlightManager : Singleton<HighlightManager>
             _gameStateFacade = FindObjectOfType<GameStateFacade>();
 #endif
         }
+        InitPools();
+    }
+
+    private void InitPools()
+    {
+        _friendlyMovePool = new HighlightPool(friendlyMoveHighlightPrefab, transform);
+        _enemyMovePool = new HighlightPool(enemyMoveHighlightPrefab, transform);
+        _attackRangeEnemyPool = new HighlightPool(attackRangeEnemyHighlightPrefab, transform);
+        _attackRangeOtherPool = new HighlightPool(attackRangeOtherHighlightPrefab, transform);
+        _supplyPool = new HighlightPool(supplyTargetHighlightPrefab, transform);
+        _loadPool = new HighlightPool(loadTargetHighlightPrefab, transform);
+        _dropPool = new HighlightPool(dropTargetHighlightPrefab, transform);
     }
 
     private void OnEnable()
@@ -134,8 +155,8 @@ public class HighlightManager : Singleton<HighlightManager>
         var pathfinding = PathfindingManager.Instance;
         if (pathfinding == null || mapRoot == null) return;
 
-        var prefab = GetPrefabForUnit(unit, friendlyMoveHighlightPrefab, enemyMoveHighlightPrefab);
-        if (prefab == null) return;
+        var pool = GetMovePoolForUnit(unit);
+        if (pool == null) return;
 
         var reachable = pathfinding.GetReachableCells(unit);
         var unitPos = unit.GridCoord;
@@ -144,11 +165,19 @@ public class HighlightManager : Singleton<HighlightManager>
         {
             if (coord == unitPos) continue;
 
-            var go = PlaceHighlight(prefab, coord);
+            var go = pool.Get(GetHighlightPosition(coord));
             if (go != null) _moveHighlightInstances.Add(go);
         }
 
         RefreshCursorHighlightAtCurrentCoord();
+    }
+
+    private HighlightPool GetMovePoolForUnit(UnitController unit)
+    {
+        var session = _gameStateFacade != null ? _gameStateFacade.Session : null;
+        var currentFaction = session != null ? session.CurrentFaction : UnitFaction.None;
+        var isFriendly = currentFaction != UnitFaction.None && unit.OwnerFaction == currentFaction;
+        return isFriendly ? _friendlyMovePool : _enemyMovePool;
     }
 
     private GameObject GetPrefabForUnit(UnitController unit, GameObject friendlyPrefab, GameObject enemyPrefab)
@@ -170,8 +199,8 @@ public class HighlightManager : Singleton<HighlightManager>
     {
         foreach (var go in _moveHighlightInstances)
         {
-            if (go != null)
-                Destroy(go);
+            _friendlyMovePool.ReleaseIfFromPool(go);
+            _enemyMovePool.ReleaseIfFromPool(go);
         }
         _moveHighlightInstances.Clear();
         RefreshCursorHighlightAtCurrentCoord();
@@ -202,10 +231,10 @@ public class HighlightManager : Singleton<HighlightManager>
             if (!unit.Data.CanAttackAtDistance(distance, unit.CurrentAmmo, unit.HasMovedThisTurn))
                 continue;
 
-            var prefab = GetAttackRangePrefabForCoord(unit, coord);
-            if (prefab == null) continue;
+            var pool = GetAttackPoolForCoord(unit, coord);
+            if (pool == null) continue;
 
-            var go = PlaceHighlight(prefab, coord);
+            var go = pool.Get(GetHighlightPosition(coord));
             if (go != null) _attackHighlightInstances.Add(go);
         }
 
@@ -214,10 +243,11 @@ public class HighlightManager : Singleton<HighlightManager>
 
     public void ClearAttackHighlights()
     {
+        // 攻击高光可能来自 enemy 或 other 两个池，需要分别归还
         foreach (var go in _attackHighlightInstances)
         {
-            if (go != null)
-                Destroy(go);
+            _attackRangeEnemyPool.ReleaseIfFromPool(go);
+            _attackRangeOtherPool.ReleaseIfFromPool(go);
         }
         _attackHighlightInstances.Clear();
         RefreshCursorHighlightAtCurrentCoord();
@@ -239,7 +269,7 @@ public class HighlightManager : Singleton<HighlightManager>
             if (!mapRoot.IsInBounds(coord))
                 continue;
 
-            var go = PlaceHighlight(supplyTargetHighlightPrefab, coord);
+            var go = _supplyPool.Get(GetHighlightPosition(coord));
             if (go != null)
                 _supplyHighlightInstances.Add(go);
         }
@@ -249,13 +279,7 @@ public class HighlightManager : Singleton<HighlightManager>
 
     public void ClearSupplyHighlights()
     {
-        foreach (var go in _supplyHighlightInstances)
-        {
-            if (go != null)
-                Destroy(go);
-        }
-
-        _supplyHighlightInstances.Clear();
+        _supplyPool.ReleaseAll(_supplyHighlightInstances);
         RefreshCursorHighlightAtCurrentCoord();
     }
 
@@ -272,7 +296,7 @@ public class HighlightManager : Singleton<HighlightManager>
             if (!LoadCommand.TryGetLoadTargetTransporterAtCoord(sourceUnit, mapRoot, coord, out _))
                 continue;
 
-            var go = PlaceHighlight(loadTargetHighlightPrefab, coord);
+            var go = _loadPool.Get(GetHighlightPosition(coord));
             if (go != null)
                 _loadHighlightInstances.Add(go);
         }
@@ -282,13 +306,7 @@ public class HighlightManager : Singleton<HighlightManager>
 
     public void ClearLoadHighlights()
     {
-        foreach (var go in _loadHighlightInstances)
-        {
-            if (go != null)
-                Destroy(go);
-        }
-
-        _loadHighlightInstances.Clear();
+        _loadPool.ReleaseAll(_loadHighlightInstances);
         RefreshCursorHighlightAtCurrentCoord();
     }
 
@@ -312,7 +330,7 @@ public class HighlightManager : Singleton<HighlightManager>
             if (!DropCommand.IsValidDropCoord(sourceUnit, mapRoot, coord, cargo))
                 continue;
 
-            var go = PlaceHighlight(dropTargetHighlightPrefab, coord);
+            var go = _dropPool.Get(GetHighlightPosition(coord));
             if (go != null)
                 _dropHighlightInstances.Add(go);
         }
@@ -322,12 +340,7 @@ public class HighlightManager : Singleton<HighlightManager>
 
     public void ClearDropHighlights()
     {
-        foreach (var go in _dropHighlightInstances)
-        {
-            if (go != null)
-                Destroy(go);
-        }
-
+        _dropPool.ReleaseAll(_dropHighlightInstances);
         _dropHighlightInstances.Clear();
         RefreshCursorHighlightAtCurrentCoord();
     }
@@ -354,7 +367,7 @@ public class HighlightManager : Singleton<HighlightManager>
         return result;
     }
 
-    private GameObject GetAttackRangePrefabForCoord(UnitController sourceUnit, Vector2Int coord)
+    private HighlightPool GetAttackPoolForCoord(UnitController sourceUnit, Vector2Int coord)
     {
         var cell = mapRoot != null ? mapRoot.GetCellAt(coord) : null;
         var target = cell != null ? cell.UnitController : null;
@@ -365,9 +378,9 @@ public class HighlightManager : Singleton<HighlightManager>
                              sourceUnit.Data.CanAttackTarget(target.Data, sourceUnit.CurrentAmmo, sourceUnit.HasMovedThisTurn);
 
         if (canAttackEnemy)
-            return attackRangeEnemyHighlightPrefab != null ? attackRangeEnemyHighlightPrefab : attackRangeOtherHighlightPrefab;
+            return _attackRangeEnemyPool ?? _attackRangeOtherPool;
 
-        return attackRangeOtherHighlightPrefab != null ? attackRangeOtherHighlightPrefab : attackRangeEnemyHighlightPrefab;
+        return _attackRangeOtherPool ?? _attackRangeEnemyPool;
     }
 
     private IEnumerator PlayAndFadeOut(GameObject go)
@@ -415,14 +428,6 @@ public class HighlightManager : Singleton<HighlightManager>
             _highlightInstance.gameObject.SetActive(false);
     }
 
-    /// <summary>
-    /// 在指定格子实例化高光，返回实例。用于移动范围等高光。
-    /// </summary>
-    private GameObject PlaceHighlight(GameObject prefab, Vector2Int coord)
-    {
-        if (prefab == null || mapRoot == null || !mapRoot.IsInBounds(coord)) return null;
-        return Instantiate(prefab, GetHighlightPosition(coord), Quaternion.identity, transform);
-    }
 
     private void EnsureHighlightInstance()
     {
