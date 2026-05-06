@@ -1,4 +1,4 @@
-# Operation Marigold(新建文件夹ing）
+# Operation Marigold
 
 使用Unity开发的类《高级战争》回合制战棋项目，核心聚焦于运行时玩法层与AI模拟层共享同一套规则逻辑，并通过门面、事件驱动、ScriptableObject数据配置与组件化单位架构，构建出可扩展的网格回合系统。
 
